@@ -7,8 +7,8 @@ public class Person {
     @Id
     private Long pesel;
     private String firstName;
-    private String secoundName;
-    private String lastname;
+    private String secondName;
+    private String lastName;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(columnDefinition = "personAddress")
     private Address address ;
@@ -16,11 +16,11 @@ public class Person {
     public Person() {
     }
 
-    public Person(Long pesel,String firstName, String secoundName, String lastname, Address address) {
+    public Person(Long pesel,String firstName, String secondName, String lastName, Address address) {
         this.pesel = pesel;
         this.firstName = firstName;
-        this.secoundName = secoundName;
-        this.lastname = lastname;
+        this.secondName = secondName;
+        this.lastName = lastName;
         this.address = address;
     }
 
@@ -41,20 +41,20 @@ public class Person {
         this.firstName = firstName;
     }
 
-    public String getSecoundName() {
-        return secoundName;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setSecoundName(String secoundName) {
-        this.secoundName = secoundName;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Address getAddress() {

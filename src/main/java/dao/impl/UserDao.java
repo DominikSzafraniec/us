@@ -80,7 +80,7 @@ public class UserDao implements UserDaoInterface<User, Long> {
     }
     @SuppressWarnings("unchecked")
     public List<User> customQuery() {
-        List<User> users = (List<User>) getCurrentSession().createNativeQuery("Select u from User u where User.userID > 2").list();
+        List<User> users = (List<User>) getCurrentSession().createNativeQuery("Select * from User where User.userID > 2").list();
         return users;
     }
 
