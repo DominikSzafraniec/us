@@ -32,7 +32,7 @@ public abstract class AbstractDao<K, E> implements Dao<K, E> {
 
     @PostConstruct
     private void createEntityManager() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("pl.wipek.database");
+        entityManagerFactory = Persistence.createEntityManagerFactory("us");
         entityManager = entityManagerFactory.createEntityManager();
     }
 
