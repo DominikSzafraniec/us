@@ -5,16 +5,23 @@ import javax.persistence.*;
 @Entity
 public class Person {
     @Id
-    @GeneratedValue
     private Long pesel;
     private String firstName;
     private String secoundName;
     private String lastname;
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(columnDefinition = "personAddress")
     private Address address ;
 
     public Person() {
+    }
+
+    public Person(Long pesel,String firstName, String secoundName, String lastname, Address address) {
+        this.pesel = pesel;
+        this.firstName = firstName;
+        this.secoundName = secoundName;
+        this.lastname = lastname;
+        this.address = address;
     }
 
 

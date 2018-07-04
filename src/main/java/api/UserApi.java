@@ -18,7 +18,7 @@ public class UserApi {
     {
         try
         {
-            userService.findByUsername(user.getUsername());
+            userService.findByUsername(user.getLogin());
             return false;
         }
         catch (NoResultException e)
@@ -36,10 +36,10 @@ public class UserApi {
     }
 
     @GET
-    @Path("/{username}")
+    @Path("/{login}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User getUserByUsername(@PathParam("username") String username)
+    public User getUserByUsername(@PathParam("login") String login)
     {
-        return userService.findByUsername(username);
+        return userService.findByUsername(login);
     }
 }

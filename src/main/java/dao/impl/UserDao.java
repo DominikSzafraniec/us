@@ -85,9 +85,9 @@ public class UserDao implements UserDaoInterface<User, Long> {
     }
 
     @Override
-    public User findByUsername(String username) {
+    public User findByUsername(String login) {
         Query query = getCurrentSession().createNativeQuery("select user.userID from user where user.username = :username")
-                .setParameter("username",username);
+                .setParameter("login",login);
         BigInteger tmp = (BigInteger) query.getSingleResult();
         User user = getCurrentSession().get(User.class,tmp.longValue());
         return user;
@@ -106,10 +106,10 @@ public class UserDao implements UserDaoInterface<User, Long> {
     }
 
     @Override
-    public User findByUsernameAndPassword(String username, String password)
+    public User findByUsernameAndPassword(String login, String password)
     {
-        Query query = getCurrentSession().createNativeQuery("select user.userID from user where user.username = :username and user.password = :password")
-                .setParameter("username", username).setParameter("password", password);
+        Query query = getCurrentSession().createNativeQuery("select user.userID from user where user.login = :login and user.password = :password")
+                .setParameter("login", login).setParameter("password", password);
         BigInteger tmp = (BigInteger) query.getSingleResult();
         User user = getCurrentSession().get(User.class, tmp.longValue());
         return user;
