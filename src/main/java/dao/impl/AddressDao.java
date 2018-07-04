@@ -9,7 +9,7 @@ public class AddressDao implements AddressDaoInterface<Address,Long> {
 
     @Override
     public void persist(Address entity) {
-        
+
     }
 
     @Override

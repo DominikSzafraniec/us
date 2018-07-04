@@ -80,13 +80,13 @@ public class UserDao implements UserDaoInterface<User, Long> {
     }
     @SuppressWarnings("unchecked")
     public List<User> customQuery() {
-        List<User> users = (List<User>) getCurrentSession().createNativeQuery("Select * from User where User.userID > 2").list();
+        List<User> users = (List<User>) getCurrentSession().createNativeQuery("Select * from User where User.id > 2").list();
         return users;
     }
 
     @Override
     public User findByLogin(String login) {
-        Query query = getCurrentSession().createNativeQuery("select user.userID from user where user.login = :login")
+        Query query = getCurrentSession().createNativeQuery("select user.id from user where user.login = :login")
                 .setParameter("login",login);
         BigInteger tmp = (BigInteger) query.getSingleResult();
         User user = getCurrentSession().get(User.class,tmp.longValue());
@@ -108,7 +108,7 @@ public class UserDao implements UserDaoInterface<User, Long> {
     @Override
     public User findByLoginAndPassword(String login, String password)
     {
-        Query query = getCurrentSession().createNativeQuery("select user.userID from user where user.login = :login and user.password = :password")
+        Query query = getCurrentSession().createNativeQuery("select user.id from user where user.login = :login and user.password = :password")
                 .setParameter("login", login).setParameter("password", password);
         BigInteger tmp = (BigInteger) query.getSingleResult();
         User user = getCurrentSession().get(User.class, tmp.longValue());

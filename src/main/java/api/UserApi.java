@@ -13,18 +13,18 @@ public class UserApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public User addUser(User user)
+    public boolean addUser(User user)
     {
         try
         {
             userService.findByLogin(user.getLogin());
-            return user;
+            return false;
         }
         catch (NoResultException e)
         {
             user.setToken("user");
             userService.persist(user);
-            return user;
+            return true;
         }
     }
     @GET
