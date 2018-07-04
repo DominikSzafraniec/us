@@ -8,7 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
-@Path("/adresses")
+@Path("/addresses")
 public class AddressApi {
     private AddressService addressService=new AddressService();
     @POST
