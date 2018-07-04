@@ -2,9 +2,6 @@ package entity;
 
 import java.io.Serializable;
 
-/**
- * @author Krzysztof Adamczyk on 26.10.2017.
- */
 public abstract class User implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -19,9 +19,9 @@ public class CustomerApi {
 
         Customer c1 = new Customer();
         c1.setId("1");
-        c1.setLogin("c1");
-        c1.setPassword("c1");
-        c1.setToken("c1");
+        c1.setLogin("l1");
+        c1.setPassword("p1");
+        c1.setToken("t1");
         Customer c2 = new Customer();
         c2.setId("2");
         c2.setLogin("c2");
