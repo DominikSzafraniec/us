@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 public class Person {
     @Id
+    @Column(unique = true)
     private Long pesel;
     private String firstName;
     private String secondName;

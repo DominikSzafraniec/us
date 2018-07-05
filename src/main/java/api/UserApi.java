@@ -41,4 +41,29 @@ public class UserApi {
     {
         return userService.findByLogin(login);
     }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    public boolean updateUser(User user)
+    {
+        try
+        {
+            userService.findById(user.getId());
+            userService.update(user);
+            return true;
+        }
+        catch (NoResultException e)
+        {
+            return false;
+        }
+    }
+
+    @DELETE
+    @Produces("application/json")
+    @Path("/delete/{id}")
+    public List<User> deleteUser(@PathParam("id") Long id)
+    {
+        userService.delete(id);
+        return userService.findAll();
+    }
 }

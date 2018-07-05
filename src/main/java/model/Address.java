@@ -6,6 +6,7 @@ import java.util.List;
 @Entity
 public class Address {
     @Id
+    @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String street;

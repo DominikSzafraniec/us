@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class User {
 
     @Id
+    @Column(unique = true)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String login;

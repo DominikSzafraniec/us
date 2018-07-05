@@ -43,15 +43,28 @@ public class UserDao implements UserDaoInterface<User, Long> {
     public Session getCurrentSession() {
         return currentSession;
     }
-
-
     public void persist(User entity) {
         getCurrentSession().save(entity);
     }
-
-
     public void update(User entity) {
         getCurrentSession().update(entity);
+    }
+    public void delete(User entity) {
+        getCurrentSession().delete(entity);
+    }
+
+
+
+    public void setCurrentSession(Session currentSession) {
+        this.currentSession = currentSession;
+    }
+
+    public Transaction getCurrentTransaction() {
+        return currentTransaction;
+    }
+
+    public void setCurrentTransaction(Transaction currentTransaction) {
+        this.currentTransaction = currentTransaction;
     }
 
 
@@ -59,10 +72,6 @@ public class UserDao implements UserDaoInterface<User, Long> {
         User user = getCurrentSession().get(User.class, id);
         return user;
 
-    }
-
-    public void delete(User entity) {
-        getCurrentSession().delete(entity);
     }
 
     public List<User> findAll() {
@@ -83,7 +92,6 @@ public class UserDao implements UserDaoInterface<User, Long> {
         List<User> users = (List<User>) getCurrentSession().createNativeQuery("Select * from User where User.id > 2").list();
         return users;
     }
-
     @Override
     public User findByLogin(String login) {
         Query query = getCurrentSession().createNativeQuery("select user.id from user where user.login = :login")
@@ -92,19 +100,6 @@ public class UserDao implements UserDaoInterface<User, Long> {
         User user = getCurrentSession().get(User.class,tmp.longValue());
         return user;
     }
-
-    public void setCurrentSession(Session currentSession) {
-        this.currentSession = currentSession;
-    }
-
-    public Transaction getCurrentTransaction() {
-        return currentTransaction;
-    }
-
-    public void setCurrentTransaction(Transaction currentTransaction) {
-        this.currentTransaction = currentTransaction;
-    }
-
     @Override
     public User findByLoginAndPassword(String login, String password)
     {

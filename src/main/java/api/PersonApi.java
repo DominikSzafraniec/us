@@ -41,4 +41,29 @@ public class PersonApi {
     {
         return personService.findByPesel(pesel);
     }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    public boolean updatePerson(Person person)
+    {
+        try
+        {
+            personService.findByPesel(person.getPesel());
+            personService.update(person);
+            return true;
+        }
+        catch (NoResultException e)
+        {
+            return false;
+        }
+    }
+
+    @DELETE
+    @Produces("application/json")
+    @Path("/delete/{pesel}")
+    public List<Person> deletePerson(@PathParam("pesel") Long pesel)
+    {
+        personService.delete(pesel);
+        return personService.findAll();
+    }
 }
