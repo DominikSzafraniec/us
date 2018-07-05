@@ -1,6 +1,7 @@
 package dao.impl;
 
 import dao.PersonDaoInterface;
+import model.Address;
 import model.Person;
 
 import org.hibernate.Session;
@@ -58,8 +59,8 @@ public class PersonDao implements PersonDaoInterface<Person, Long> {
         Person person = getCurrentSession().get(Person.class,tmp.longValue());
         return person;
     }
-
     public void delete(Person entity) {
+        entity.setAddress(new Address());
         getCurrentSession().delete(entity);
     }
 

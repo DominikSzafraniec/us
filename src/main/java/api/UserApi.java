@@ -1,6 +1,7 @@
 package api;
 
 import model.User;
+import service.PersonService;
 import service.UserService;
 
 import javax.persistence.NoResultException;
@@ -10,7 +11,7 @@ import java.util.List;
 @Path("/users")
 public class UserApi {
     private UserService userService=new UserService();
-
+    private PersonService personService=new PersonService();
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean addUser(User user)
@@ -22,7 +23,14 @@ public class UserApi {
         }
         catch (NoResultException e)
         {
-            user.setToken("user");
+            try
+            {
+                user.setPerson(personService.findByPesel(user.getPerson().getPesel()));
+            }
+            catch (NoResultException e1)
+            {
+            }
+
             userService.persist(user);
             return true;
         }

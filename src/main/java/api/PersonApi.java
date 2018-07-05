@@ -21,7 +21,6 @@ public class PersonApi {
         try
         {
             personService.findByPesel(person.getPesel());
-
             return false;
         }
         catch (NoResultException e)
@@ -61,6 +60,15 @@ public class PersonApi {
         try
         {
             personService.findByPesel(person.getPesel());
+            try
+            {
+                Address address1= addressService.findAddress(person.getAddress());
+                person.getAddress().setId(address1.getId());
+            }
+            catch (NoResultException e1)
+            {
+
+            }
             personService.update(person);
             return true;
         }

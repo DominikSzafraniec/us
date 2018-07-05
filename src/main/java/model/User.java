@@ -15,6 +15,16 @@ public class User {
     private String password;
     private String token;
 
+    @OneToOne
+    private Person person;
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
     public Long getId() {
         return id;
