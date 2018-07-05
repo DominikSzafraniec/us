@@ -33,6 +33,14 @@ public class DeclarationApi {
         return declarationService.findAll();
     }
 
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/useronly/{pesel}")
+    public List<Declaration> getListOfDeclarations(@PathParam("pesel") Long pesel)
+    {
+        return declarationService.findAllUserDeclaration(pesel);
+    }
+
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean updateDeclaration(Declaration declaration)

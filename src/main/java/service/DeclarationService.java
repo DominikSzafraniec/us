@@ -36,6 +36,12 @@ public class DeclarationService {
         declarationDao.delete(declaration);
         declarationDao.closeCurrentSessionWithTransaction();
     }
+    public List<Declaration> findAllUserDeclaration(Long pesel) {
+        declarationDao.openCurrentSession();
+        List<Declaration> declarations = declarationDao.findAllUserDeclaration(pesel);
+        declarationDao.closeCurrentSession();
+        return declarations;
+    }
 
     public List<Declaration> findAll() {
         declarationDao.openCurrentSession();

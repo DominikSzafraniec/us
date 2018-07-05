@@ -10,6 +10,8 @@ public interface DeclarationDaoInterface<T, Id extends Serializable> {
 
     T findById(Id id);
 
+    List<T> findAllUserDeclaration(Id pesel);
+
     void delete(T entity);
 
     List<T> findAll();

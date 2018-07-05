@@ -52,6 +52,12 @@ public class DeclarationDao implements DeclarationDaoInterface<Declaration, Long
         return declaration;
     }
 
+    @Override
+    public List<Declaration> findAllUserDeclaration(Long pesel) {
+        List<Declaration> declarations = (List<Declaration>) getCurrentSession().createQuery("select d from Declaration d where d.person.pesel=:pesel ").setParameter("pesel", pesel).list();
+        return declarations;
+    }
+
     public void delete(Declaration entity) {
         getCurrentSession().delete(entity);
     }

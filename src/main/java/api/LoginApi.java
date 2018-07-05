@@ -10,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/login")
 public class LoginApi {
     private UserService userService=new UserService();
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -18,7 +19,7 @@ public class LoginApi {
         try
         {
             User local = userService.findByLoginAndPassword(user.getLogin(), user.getPassword());
-            return new Login(local.getToken(),local.getPerson().getPesel());
+            return new Login(local.getToken(),local.getLogin(),local.getPerson().getPesel());
         }
         catch (NoResultException e)
         {
