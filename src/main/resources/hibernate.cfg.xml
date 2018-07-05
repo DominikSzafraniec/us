@@ -18,6 +18,7 @@
     <mapping class="model.User" />
     <mapping class="model.Address" />
     <mapping class="model.Person" />
+    <mapping class="model.Declaration" />
 
 
   </session-factory>
