@@ -9,7 +9,7 @@ public interface UserDaoInterface<T, Id extends Serializable> {
 
     void update(T entity);
 
-    public T findById(Id id);
+    T findById(Id id);
 
     void delete(T entity);
 

@@ -23,6 +23,13 @@ public class AddressService {
 
     }
 
+    public Address findAddress(Address adr) {
+        addressDao.openCurrentSession();
+        Address address = addressDao.findAddress(adr);
+        addressDao.closeCurrentSession();
+        return address;
+    }
+
     public Address findById(Long id) {
         addressDao.openCurrentSession();
         Address address = addressDao.findById(id);

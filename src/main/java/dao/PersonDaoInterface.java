@@ -8,7 +8,7 @@ public interface PersonDaoInterface<T, Id extends Serializable> {
 
     void update(T entity);
 
-    public T findByPesel(Id pesel);
+    T findByPesel(Id pesel);
 
     void delete(T entity);
 

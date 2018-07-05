@@ -14,9 +14,10 @@ public class AddressApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean addAddress(Address address){
+        System.out.println("ID "+address.getId());
         try
         {
-            addressService.findById(address.getId());
+            Address address1=addressService.findAddress(address);
             return false;
         }
         catch (NoResultException e)
@@ -25,9 +26,10 @@ public class AddressApi {
             return true;
         }
     }
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Address> getListOfPerson()
+    public List<Address> getListOfAddresses()
     {
         return addressService.findAll();
     }

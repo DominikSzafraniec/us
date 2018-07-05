@@ -8,6 +8,8 @@ public interface AddressDaoInterface<T,Id extends Serializable> {
 
     void update(T entity);
 
+    T findAddress(T entity);
+
     public T findById(Id id);
 
     void delete(T entity);

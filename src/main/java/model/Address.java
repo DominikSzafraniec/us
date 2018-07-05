@@ -1,9 +1,7 @@
 package model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Address {
@@ -15,17 +13,9 @@ public class Address {
     private String number;
     private String postCode;
     private String province;
+    @OneToMany (mappedBy="address")
+    private List<Person> persons;
 
-    public Address() {
-    }
-
-    public Address(String street, String city, String number, String postCode, String province) {
-        this.street = street;
-        this.city = city;
-        this.number = number;
-        this.postCode = postCode;
-        this.province = province;
-    }
 
     public Long getId() {
         return id;

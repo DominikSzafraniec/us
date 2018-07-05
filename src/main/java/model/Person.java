@@ -10,7 +10,7 @@ public class Person {
     private String secondName;
     private String lastName;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(columnDefinition = "personAddress")
+    @JoinColumn(name = "personAddress")
     private Address address ;
 
     public Person() {
@@ -63,5 +63,16 @@ public class Person {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "pesel=" + pesel +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address=" + address +
+                '}';
     }
 }

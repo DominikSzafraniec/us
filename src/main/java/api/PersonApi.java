@@ -13,8 +13,9 @@ public class PersonApi {
     private PersonService personService=new PersonService();
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public boolean addUser(Person person)
+    public boolean addPerson(Person person)
     {
+        System.out.println(person);
         try
         {
             personService.findByPesel(person.getPesel());
@@ -36,8 +37,8 @@ public class PersonApi {
     @GET
     @Path("/{pesel}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Person getPersonByPesel(@PathParam("pesel") String pesel)
+    public Person getPersonByPesel(@PathParam("pesel") Long pesel)
     {
-        return personService.findByPesel(Long.valueOf(pesel));
+        return personService.findByPesel(pesel);
     }
 }

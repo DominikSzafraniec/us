@@ -5,7 +5,9 @@ import model.Person;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import static config.DatabaseConfiguration.getSessionFactory;
@@ -50,9 +52,11 @@ public class PersonDao implements PersonDaoInterface<Person, Long> {
 
     @Override
     public Person findByPesel(Long pesel) {
-        Person person = getCurrentSession().get(Person.class, pesel);
+        Query query = getCurrentSession().createNativeQuery("select person.pesel from person where person.pesel = :pesel")
+                .setParameter("pesel",pesel);
+        BigInteger tmp = (BigInteger) query.getSingleResult();
+        Person person = getCurrentSession().get(Person.class,tmp.longValue());
         return person;
-
     }
 
     public void delete(Person entity) {
