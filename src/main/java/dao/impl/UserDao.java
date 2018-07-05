@@ -100,6 +100,7 @@ public class UserDao implements UserDaoInterface<User, Long> {
         User user = getCurrentSession().get(User.class,tmp.longValue());
         return user;
     }
+
     @Override
     public User findByLoginAndPassword(String login, String password)
     {

@@ -51,6 +51,20 @@ public class UserApi {
     }
 
     @PUT
+    @Path("/password")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public boolean updatePassword(User user){
+        try{
+            User u = userService.findById(user.getId());
+            u.setPassword(user.getPassword());
+            userService.update(u);
+            return true;
+        }
+        catch(NoResultException e){
+            return false;
+        }
+    }
+    @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean updateUser(User user)
     {
