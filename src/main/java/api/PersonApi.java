@@ -1,6 +1,8 @@
 package api;
 
+import model.Address;
 import model.Person;
+import service.AddressService;
 import service.PersonService;
 
 import javax.persistence.NoResultException;
@@ -10,19 +12,29 @@ import java.util.List;
 
 @Path("/persons")
 public class PersonApi {
+    private AddressService addressService =new AddressService() ;
     private PersonService personService=new PersonService();
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean addPerson(Person person)
     {
-        System.out.println(person);
         try
         {
             personService.findByPesel(person.getPesel());
+
             return false;
         }
         catch (NoResultException e)
         {
+            try
+            {
+                Address address1= addressService.findAddress(person.getAddress());
+                person.getAddress().setId(address1.getId());
+            }
+            catch (NoResultException e1)
+            {
+
+            }
             personService.persist(person);
             return true;
         }

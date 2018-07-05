@@ -34,4 +34,28 @@ public class AddressApi {
         return addressService.findAll();
     }
 
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    public boolean updateAddress(Address address)
+    {
+        try
+        {
+            addressService.findById(address.getId());
+            addressService.update(address);
+            return true;
+        }
+        catch (NoResultException e)
+        {
+            return false;
+        }
+    }
+
+    @DELETE
+    @Produces("application/json")
+    @Path("/delete/{id}")
+    public List<Address> deleteAddress(@PathParam("id") Long id)
+    {
+        addressService.delete(id);
+        return addressService.findAll();
+    }
 }
