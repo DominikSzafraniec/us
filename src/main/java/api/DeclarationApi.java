@@ -14,17 +14,8 @@ public class DeclarationApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean addDeclaration(Declaration declaration){
-        try
-        {
-
-            Declaration declaration1=declarationService.findById(declaration.getId());
-            return false;
-        }
-        catch (NoResultException e)
-        {
             declarationService.persist(declaration);
-            return true;
-        }
+            return false;
     }
 
     @GET
