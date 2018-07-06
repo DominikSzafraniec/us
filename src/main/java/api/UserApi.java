@@ -1,6 +1,8 @@
 package api;
 
+import model.Address;
 import model.User;
+import service.AddressService;
 import service.PersonService;
 import service.UserService;
 
@@ -12,6 +14,7 @@ import java.util.List;
 public class UserApi {
     private UserService userService=new UserService();
     private PersonService personService=new PersonService();
+    private AddressService addressService=new AddressService();
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean addUser(User user)
@@ -29,6 +32,16 @@ public class UserApi {
             }
             catch (NoResultException e1)
             {
+                try
+                {
+                    Address address1= addressService.findAddress(user.getPerson().getAddress());
+                    user.getPerson().getAddress().setId(address1.getId());
+                }
+                catch (NoResultException e2)
+                {
+
+                }
+                personService.persist(user.getPerson());
             }
 
             userService.persist(user);
