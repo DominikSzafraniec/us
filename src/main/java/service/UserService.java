@@ -58,10 +58,10 @@ public class UserService {
         return users;
     }
 
-    public User findByLogin(String login)
+    public List<User> findByLogin(String login)
     {
         userDao.openCurrentSession();
-        User user = userDao.findByLogin(login);
+        List<User> user = userDao.findByLogin(login);
         userDao.closeCurrentSession();
         return user;
     }

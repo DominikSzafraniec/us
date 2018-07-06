@@ -19,7 +19,7 @@ public interface UserDaoInterface<T, Id extends Serializable> {
 
     List<T> customQuery();
 
-    T findByLogin(String login);
+    List<T> findByLogin(String login);
 
     T findByLoginAndPassword(String login, String password);
 }
