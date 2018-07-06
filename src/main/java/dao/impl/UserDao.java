@@ -93,11 +93,11 @@ public class UserDao implements UserDaoInterface<User, Long> {
         return users;
     }
     @Override
-    public List<User> findByLogin(String login) {
+    public User findByLogin(String login) {
         Query query = getCurrentSession().createNativeQuery("select user.id from user where user.login = :login")
                 .setParameter("login",login);
-
-        List<User> user = query.list();
+        BigInteger tmp = (BigInteger) query.getSingleResult();
+        User user = getCurrentSession().get(User.class,tmp.longValue());
         return user;
     }
 
@@ -109,6 +109,10 @@ public class UserDao implements UserDaoInterface<User, Long> {
         BigInteger tmp = (BigInteger) query.getSingleResult();
         User user = getCurrentSession().get(User.class, tmp.longValue());
         return user;
+    }
+    public void updatePassword(User u) {
+        getCurrentSession().createQuery("update 'user' set password =: password where login =:login ")
+                .setParameter("password", u.getPassword()).setParameter("login", u.getLogin()).executeUpdate();
     }
 
 }

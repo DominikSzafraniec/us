@@ -58,7 +58,7 @@ public class UserApi {
     @GET
     @Path("/{login}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> getUserByLogin(@PathParam("login") String login)
+    public User getUserByLogin(@PathParam("login") String login)
     {
         return userService.findByLogin(login);
     }

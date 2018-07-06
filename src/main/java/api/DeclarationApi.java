@@ -16,6 +16,7 @@ public class DeclarationApi {
     public boolean addDeclaration(Declaration declaration){
         try
         {
+
             Declaration declaration1=declarationService.findById(declaration.getId());
             return false;
         }

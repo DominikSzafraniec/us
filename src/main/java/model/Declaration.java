@@ -35,6 +35,34 @@ public class Declaration {
     private Double r4c4;
     private Double r4c5;
 
+    public Declaration(Integer rok, Person person, Double r1c1, Double r1c2, Double r1c3, Double r1c4, Double r1c5, Double r2c1, Double r2c2, Double r2c3, Double r2c4, Double r2c5, Double r3c1, Double r3c2, Double r3c3, Double r3c4, Double r3c5, Double r4c1, Double r4c2, Double r4c3, Double r4c4, Double r4c5) {
+        this.rok = rok;
+        this.person = person;
+        this.r1c1 = r1c1;
+        this.r1c2 = r1c2;
+        this.r1c3 = r1c3;
+        this.r1c4 = r1c4;
+        this.r1c5 = r1c5;
+        this.r2c1 = r2c1;
+        this.r2c2 = r2c2;
+        this.r2c3 = r2c3;
+        this.r2c4 = r2c4;
+        this.r2c5 = r2c5;
+        this.r3c1 = r3c1;
+        this.r3c2 = r3c2;
+        this.r3c3 = r3c3;
+        this.r3c4 = r3c4;
+        this.r3c5 = r3c5;
+        this.r4c1 = r4c1;
+        this.r4c2 = r4c2;
+        this.r4c3 = r4c3;
+        this.r4c4 = r4c4;
+        this.r4c5 = r4c5;
+    }
+
+    public Declaration() {
+    }
+
     public Long getId() {
         return id;
     }
